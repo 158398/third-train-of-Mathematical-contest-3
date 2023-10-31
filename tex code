@@ -1,0 +1,459 @@
+%%
+%% This is file `mcmthesis-demo.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% mcmthesis.dtx  (with options: `demo')
+%%
+%% -----------------------------------
+%%
+%% This is a generated file.
+%%
+%% Copyright (C)
+%%       2010 -- 2015 by Zhaoli Wang
+%%       2014 -- 2019 by Liam Huang
+%%       2019 -- present by latexstudio.net
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Liam Huang.
+%%
+%%
+%% This is file `mcmthesis-demo.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% mcmthesis.dtx  (with options: `demo')
+%%
+%% -----------------------------------
+%%
+%% This is a generated file.
+%%
+%% Copyright (C)
+%%       2010 -- 2015 by Zhaoli Wang
+%%       2014 -- 2019 by Liam Huang
+%%       2019 -- present by latexstudio.net
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is latexstudio.net.
+%%
+\documentclass{mcmthesis}
+\mcmsetup{CTeX = false,    % 使用 CTeX 套装时，设置为 true
+          tcn =\textcolor{red} {02}, problem = \textcolor{red}{D},
+          sheet = true, titleinsheet = true, keywordsinsheet = true,
+          titlepage = false, abstract = false}
+\usepackage{newtxtext}%\usepackage{times}
+\usepackage{lipsum}
+\usepackage{algorithm}
+\usepackage{algpseudocode}     
+\usepackage{amsthm}
+\usepackage{txfonts}
+\usepackage{balance}
+\usepackage{appendix}
+\usepackage{color}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{graphicx}
+\begin{document}
+\title{\textbf{Dive in Music:Comprehensive Exploration of Song,Genre,Artist}}
+\begin{abstract}
+$~~~~$Music is an important component of society,is seen as a world language.In different historical periods music does not only reflect contemporary spiritual outlook,but records daily life and cultural scenes.It has been witnessed that in recent decades, the music has experienced a complex process of change, each era has representative characteristics,varies features also varied over time.This fact propose some practical problems to solve.
+\par For problem1,we built a weighted digraph model within Pagerank algorithm which allowed measuring influence of artists numerically.Weight of every edge is defined by Pagerank algorithm and the two artists,our result shows Little Richard has biggest influence among Pop / Rock artists.
+\par For problem2,in order to avoid to impact of magnitude of different features,we normalized them and used a improved tanimoto coefficients combined weight which can be calculated by random forest to measure similarity. The result showed that musicians in the same genre were tend to created similar songs,however,there were not two completely dissimilar songs or musicians.
+\par For problem3,we applied the similarity measurement model in the previous paper on analyse of artists and genres.First, through the analysis of song characteristics, we got the important characteristics of identifying genres; then, we summarized the similarity and association between genres.
+\par For problem4,we converted features into five categories, are rhythm,energy,emotion,lyric,melody respectively,each represented one aspect of a song,they were created to analyze influence.These categories were design to be belong to [0,1] to avoid scale imbalance.Result shows Bob Dylan has been inflected by Johnny Cash in rhythm and melody.
+\par For problem5 and problem6,we proposed the mutation detection model based on sliding T test,it tested the five category features and locate the potential music revolution according to the time; then, we analyze the characteristics of the combined genre and identify the genres that promote the revolution; finally, we determine the revolutionaries by influence factor in the network and verify their role where we chose ridge regression model to overcome interference of noise points.The calculation indicated "Pop / Rock" once leaded a revolution in nearly a century.The development of artists was consistent with the evolution of the genre and works of artists were becoming less and better.
+\par For problem7,based on previous work and history,we draw a conclusion that the broad acceptance of the Pop/Rock genre in the 1960s shocked the music industry to its core. Rock music in the 1960s had a significant influence on many facets of American social ideals, such as race relations, the spirit of the times, and values.
+\begin{keywords}
+Weighted digraph,Pagerank algorithm,Tanimoto coeffient,Random forest,Sliding T test,Ridge regression
+\end{keywords}
+\end{abstract}
+\maketitle
+
+%% Generate the Table of Contents, if it's needed.
+\tableofcontents   % 若不想要目录, 注释掉该句
+
+\newpage
+%% Generate the Table of Contents, if it's needed.
+%% \tableofcontents
+%% \newpage
+%%
+%% Generate the Memorandum, if it's needed.
+%% \memoto{\LaTeX{}studio}
+%% \memofrom{Liam Huang}
+%% \memosubject{Happy \TeX{}ing!}
+%% \memodate{\today}
+%% \logo{\LARGE I'm pretending to be a LOGO!}
+%% \begin{memo}[Memorandum]
+%%   \lipsum[1-3]
+%% \end{memo}
+%%
+\section{Introduction}
+Following of this paper was divided into five parts:first assumptions and notations used were indicated,then for each concrete problem we gave different solutions with technologies mentioned,after that result and conclusion were shown,following them strengths and weaknesses of model were given,appendix showed codes at the end.\par
+Since music is great treasure of human society and it has huge impact on society\cite{society},it is valuable to find difference and similarity between different genres of music.Previous work used some coefficients to measure similarity such as tanimoto\cite{Ta}.In a certain case,amount of information expressed by different feature is different,which makes it possible to allocate weight to different feature.Additionally,define importance and informative degree of feature by random forest is proved to be possible.\cite{tree} However,when it comes to analyze a tendency or change of a music genre,to analyze it can be hard due to many features of a song or a musician.Previous work provided an idea which is that to convert some features into a category\cite{category} to reflect characters of music.The PageRank algorithm is a representative algorithm for link analysis of graphs\cite{pagerank2}, originally used as web page sorting in the Google search engine. In fact, PageRank can be defined on any directed graph and later applied to social impact analysis, text summary and other issues.\cite{pagerank1} such as be used to rank musicians depend on their influence.To detect a huge change of a time sequence,researchers proposes a technology called sliding T test.We has studied previous achievements and built our model,using it to solve problems in practice.More than that,ordering to trace trends of artists and genres,researcher created a method named ridge regression\cite{ridge}.At the end,we took analysis of influence on music from society and politics based on prevent study\cite{history} and analyzed data under consideration of history at that time.\cite{history1}
+\section{Our work}
+Our framework used PageRank algorithm commonly used in web search,which was comprehensively considers the relationship of musicians among all musicians,to rank all musicians,it allowed us to evaluate historical status of musicians. For all musical features, we designed a similarity algorithm based on the Tanimoto coefficient to evaluate the similarity between songs or musicians, considering that the different feature represented different aspects but had similarity to each to some extend, we added a weighting method based on the random forest model to the algorithm. That is, the weights were obtained from the random forest algorithm according to the principle of information maximum.\par
+Each music features such as instrumentalness, energy, acousticness were converted into the rhythm characteristics, energy characteristics, etc of music.They represented the different aspects of music.More than that,we designed the special algorithm using the original data to calculate the size of each five characteristics of music,if two music on a similar category characteristics,it could be shown that they are similar on this feature. Such a characteristic of a music was quantified to a five-dimensional vector.\par
+We combined the number of music, types, and time into a statistical sequence. By using the sliding window t-test method, we had ability to observe the trend of music change,then we analyzed the relationship between music, musician and genre, combined with the release of music data.We found that the two characteristics of energy and emotion change significantly over time, reflecting the evolution of the genre. We characterized this dynamics using a ridge regression model. In addition, we examined the musical characteristics, number of creations, changes in popularity of artists who were consistently created in the genre, thus understanding the development of musicians.Our model was also able to further find the deep relationship between musicians, calculate statistics, discover the music revolution, etc.\par
+This paper used the previous invention including PageRank algorithm, Tanimoto coefficient, random forest model, regression model model, and creatively put forward, including the weighted correction Tanimoto coefficient, evaluate the music characteristics and similarity model, moreover, the establishment of the model conforms to the characteristics of music could reflect the different music on the characteristics of the difference and unity, which had strong scientific and reliability. These models provided a good reference for the field of musical feature analysis using musical feature data,they could be further applied to the analysis of music in the future.
+\section{Assumption }
+These assumptions were proposed to eliminate complexity of problems but still hold the main parts, all assumptions and justifications of them were re-emphasized once used in our model.
+\begin{itemize}
+    \item Assuming that the data is accurate and there is no falsified data: this means that our analysis is factual.
+    \item Influencer has influence on followers through their life.
+    \item There are more influential artists in each genre and their influence is not influenced by the genre base; the influence of artists of different genres is different from that of different genres.
+    \item Followers follow their influencer from their births to deaths.
+    \item A leader of music revolution should has bigger influence. 
+\end{itemize}
+\section{Notations}
+Notations are in table 1.
+\begin{table}[h!]
+    \centering
+    \caption{Notation Table}
+    \label{tab:my_label}
+    \begin{tabular}{cc}
+    \hline
+         \textbf{Notation} & \textbf{Meaning}\\
+         $A_{i}$&artist i\\
+         $G(V,E)$&weighted digraph\\
+         $W_{ij}$&weight value of side $E_{ij}$ in G\\
+         $I(A_{i})$&influence factor of artist\\
+         $PR(i)$&The PageRank value\\
+         M&transition matrix\\
+         $def_{in}(A_{i})$&entry degree of artist\\
+          T&weighted correction Tanimo coefficient\\
+         $C_{i}$&weight of each feature\\
+         errOOB1&out-of-bag data error\\
+         errOOB2&out-of-bag data added noise interference\\
+         $I(A\to B)$&To reflect the effect of genre A on genre B\\
+         $N(A\to B)$&indicated the number of records from A and followers from B\\
+         $x_{i}$&the ith sliding window\\
+         $t$& the test statistics at the step size\\
+         $J(\theta)$&Ridge regression form n-dimensional samples\\
+         
+    \end{tabular}
+\end{table}
+\section{Model}
+\subsection{Problem1}
+We built a weight digraph reflecting influences of artists,then calculated influence factor I which measured the musical impact of artist,after that, with the help of the PageRank algorithm,we chose influential artists from them.
+\paragraph{\textbf{Construction of the weighted directed graph}}
+Since the influence of artists from different genres differs from that of artists from other genres because there were more influential artists in each genre and their influence was unaffected by the genre base.We built networks for influencers of different genres.
+In the influence network, V represents point sets, including all the influencers of the genre and their followers (possibly of different genres),$A$ represented artist respond to point set $\left \{ 1,2\dots n \right \} $,E represented the edge set, if $A_{i}$ was a follower of $A_{j}$, add a directed edge $E_{ij}$ from i to j. The weight $W_{ij}$ reflected the influence of the influencer on the followers. The specific calculation formula is as follows:
+\begin{equation}
+    W_{ij}= \left\{\begin{matrix}
+  e^{-\frac{t_{i}-t_{j}  }{\alpha } } ,\text{if} ~~g_{i}=g_{j}   \\
+\beta \times e^{-\frac{t_{i}-t_{j}  }{\alpha } },else
+\end{matrix}\right.
+\end{equation}
+where t represented The age of active artists,g represented genre,$\alpha$ was parameter for scaling the dating difference,$\beta$ was a parameter between 0 and 1.The weights were basically between 0 and 1, reflecting that if the influencers and followers came from the same genre, their influence was strong and if the influencers and followers come from different genres. Thus, we represent the affected network relationships as figure G.
+\paragraph{\textbf{PageRank algorithm}}
+The basic idea of this algorithm was to define a random walk model on a directed graph, a first-order Markov chain, describing the behavior of random walkers randomly visiting individual nodes along a directed graph. Under certain conditions, the probability that the limit case visited each node converges to a stationary distribution, then the stationary probability of each node were PageRank values. In our model, the artist corresponding to the nodes often visited during the walk could be regarded as an important influencer,because many other artists could be traced back to this influencer through directed edges, indicating that he directly or indirectly affects many people.\par The PageRank value PR (i) was the description of the musical influence of the artist. We took it as the influence factor I,the greater the I, the greater the musical influence of the artist.\par
+We constructed a transition matrix M on the basis of G. The probability $m_{ij}$ from i to j could be calculated by the following formula:
+\begin{equation}
+    m_{ij}=\left\{\begin{matrix}
+ \frac{w_{ij} }{\sum w_{i}} ,E_{ij}\in E \\
+0,else
+\end{matrix}\right.
+\end{equation}where$\sum w_{i}$represents the total output of the junction i,$M=\left [ m_{ij}  \right ]_{n\times n}^{T}$,all columns of M are 1,additionally, each column represents the transition probability distribution in a walk model.\par
+Since the influence relationship was one-way, the wandering process on G fallen into some points that, according to the nature of the Markov chain.In order to solve this problem, we added a smoothing term to the random walk so that it travelled to the other nodes with some probability. A transition matrix with both transition probability was combined with M to obtain a new Markov chain. It could be shown that this Markov chain must had a stationary distribution and that the stationary distribution R (i. e. the final PageRank-value) satisfies:
+\begin{equation}
+    R=dMR+\frac{1-d}{n}v_{1}
+\end{equation}where d was the damping factor, reflecting the participation of M in the random walk; the $v_{1}$ was a n-dimensional column vector with all components 1.Then based on it,R was given by:
+\begin{equation}
+    R=\left ( e_{n\times n}-dM  \right )^{-1} \frac{1-d}{n}v_{1}
+\end{equation}where $e_{n\times n}$represented the unit matrix of order n,$R=\left [ PR\left ( 1 \right ),PR\left ( 2 \right )  \dots PR\left ( n \right )  \right ]^{T} $,the influence factor $I(A_{i})$ could be represented by $PR(i)$
+\paragraph{\textbf{Results of the model together with the subgraph analysis}}
+We applied the proposed model to all the influencers of the genre "Pop / Rock" and their followers, constructed the corresponding weighted directed graph and calculated their influence factors using the PageRank algorithm. During the calculation, we set $\alpha$ =100, $\beta$ =0.5, d =0.95. The top five "Pop / Rock" artists were as shown in table2:
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+         $A_{i}$&Little Richard&Esquerita&Elvis Presley&The Beatles&Chuck Berry  \\
+         \hline
+        $ I\left ( A_{i}  \right )$ & 0.16&0.15&0.027&0.025&0.024\\
+        \hline
+    \end{tabular}
+    \caption{Top five influential artists among Pop/Rock}
+    \label{tab:my_label}
+\end{table}
+In order to further verified and analyzed the model results, we extracted the subgraphs formed by the top influential artists from $G (V, E)$, because these artists were very influential and had valuable influence relationships between them. We stratified the graphs according to the topological order in the subgraph.
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+        $A_{i}$&Little Richard&Esquerita&The Beatles&Bob Dylan&The Rolling Stones\\
+        \hline
+        $I\left ( A_{i}  \right )$  &  0.16&0.15&0.025&0.023&0.011\\
+        \hline
+        $deg_{in}(A_{i})$  & 71.1&2.8&522.0&315.9&277.6\\
+        \hline
+    \end{tabular}
+    \caption{Impact factor and entry degrees of some artists}
+    \label{tab:my_label}
+\end{table}
+From the fig.1, it could be found an obvious layered structure among the ten influential artists, showing the hierarchy of the influence relationship between them. the influence factors of some artists and their total entry degree $deg_{in}(A_{i})$ of the corresponding nodes in $ G (V, E)$ were shown in table3,further more,it showed the data comparison between the two artists with the highest influence factors and the three artists with the highest enrollment degrees. The last three artists had much higher entry degrees in the weighted digraph than the first two artists, while the first two artists were both direct or indirect influences of the last three artists. We referred to influencers with high impact factors and low entry degrees such as Little Richard and Esquerita as class A influencers, and influencers with impact factors and entry degrees like The Beatles, Bob Dylan and The Rolling Stones as class B influencers. In PageRank algorithm, class B influencers were often visited in the random walk due to their high entry; class A influencers might have few followers but some class B influencers. Class B influencer received visit after the next walk visit class A influence, thus often visited in the random walk,that could be seen from table3 affects the multiple class B influence class A influence had A high influence factor, this was practical: a key person mentor might not be famous, but because affecttion of the key figures,it also had A strong influencer. Our model digged out such characters and proved the validity of our model. Furthermore, we also performed a sensitivity test for the parameters $\alpha$, $\beta$, and d in the model.
+\begin{figure}[h]
+    \centering
+    \includegraphics{figures/sub.png}
+    \caption{Subgraph of the top 10 artists in Pop / Rock with topological order}
+    \label{fig:my_label}
+\end{figure}
+\subsection{Problem2}
+A song may contain several features which describes it in different dimensions,the similarity of music could be judged by mining the various characteristics of music. For songs, they had many rich informative features, the informative similarity of songs could be measured by analyzing these data features. In this paper, the song information labels were divided into release feature, music feature and singer. Moreover, these three labels were kind of  relevant. For example, if singer A had great influence in A certain period and the characteristics of his songs would also be popular in this period. The weighted fusion of these three label information could calculate the similarity of song information we used them to measure similarity by calculate tanimoto coefficients between each song.
+A song could be treat as a vector,to avoid the error caused by the order of magnitude of different features,all numerical features were processed in max and min normalization which was:
+\begin{equation}
+   F_{i}=10*\frac{\left ( F_{i}-\min F  \right ) }{\min F -\max F } 
+\end{equation} where F represented a feature.After normalization,we created a weighted correction Tanimoto coefficient(T) based on cos coefficient to measure similarity between two songs or two artists.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{figures/T1.png}
+    \caption{Feature process}
+    \label{fig:my_label}
+\end{figure}
+The formula of T was:
+\begin{equation}
+   T_{\left ( X,Y \right )}= \frac{\sum_{i=1}^{n}C_{i}^{2}x_{i}y_{i}   }{\sum_{i=1}^{n}\left ( C_{i} x_{i}\right ) ^{2} +\sum_{i=1}^{n}\left ( C_{i} y_{i}\right ) ^{2}-\sum_{i=1}^{n}C_{i}^{2}x_{i}y_{i}    } 
+\end{equation}
+where X and Y represented two songs or artists,$T_{\left ( X,Y \right )}$ was distribute on $\left [ 0,1 \right ] $,0 meant not similar completely while 1 meant exactly the same,$C_{i}$ was weight.The calculation of the feature weights was calculated by random forest:
+\begin{itemize}
+    \item For each decision tree, the corresponding out-of-bag data was selected to calculate the out-of-bag data error, denoted as errOOB1
+    \item The feature F of all samples of the out-of-bag data added noise interference (the value of the sample at feature F can be randomly changed) and calculated the error of the out-of-bag data again, denoted as errOOB2.
+    \item Assuming N trees in the forest, the importance of feature F was:
+    \begin{equation}
+        weight\left ( F \right ) =\frac{1}{N}\sum_{i=1}^{N}\left | errOOB1-errOOB2 \right |   
+    \end{equation}
+\end{itemize}
+We payed attention to songs and artists in six major genres: "Pop / Rock,"  "R and B;"  "Vocal,"  "Jazz,"  "Blues,"  "Country."using them as the classification labels for the random forest model. It was worth noting that the characteristic importance obtained was relative to these six genres, moreover, if the music of other genres was studied, they needed to be included in the classification of the random forest model. We constructed a forest with 100 decision trees to train on 14 musical features and obtain their importance as weights $C_{i}$. Among them, "energy", "acousticness" and "popularity" were the three more important characteristics and their weights are both at 0.15 and above.
+the results of songs and artists from three genres were shown in fig.3,left was similarity of songs,right was similarity of artists:\par We chose three songs from pop,R and B,country to test model.
+\begin{figure}
+    \centering
+    \subfigure[Similarity of songs]{
+    \centering
+    \includegraphics[width=0.45\textwidth,height=0.3\textwidth]{figures/heatofsong.png}
+    }
+    \subfigure[Similarity of artists]{
+    \includegraphics[width=0.45\textwidth,height=0.3\textwidth]{figures/heatofartists.png}
+    }
+    \caption{T of song and artist}
+    \label{fig:my_label}
+\end{figure}
+where similarity increased from blue to red.The figure showed the genres were more similar internally than between genres. At the same time, there was no lack of similarity between some genres, indicating that each genres had different degrees of intersection.Moreover, songs within the same genre had higher ratings. Songs within the same genre could be distinguished from songs of other genres by a combination of several traits. The music of the various genres was not completely independent, but interconnecter. As the carrier of human emotion transmission, music had different degrees of similarity among different genres.
+\subsection{Problem3}
+\paragraph{\textbf{Identify the characteristics of the genre}}
+We used the random forest algorithm to calculate the weights that reflect the importance of song features (the classified objects are "Pop / Rock", "R and B;", "" Vocal "," Jazz "," Blues "," Country "). The larger the weight characteristics, the more helpful to identify the genres. Among the weights calculated, "energy", "acousticness" and "popularity" were the three more important characteristics. We draw the numerical distribution of the six genres on "energy" and "acousticness", as shown fig.4.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textwidth]{figures/dis.png}
+    \caption{energy and acousticness distribution of six genres}
+    \label{fig:my_label}
+\end{figure}
+\par It could be intuitively found from the figure: "Pop / Rock" and "R and B" had obvious high "energy" and low "acousticness" characteristics; "Vocal" and "Jazz" had obvious low "energy" and high "acousticness" characteristics. These were an important basis for identifying these genres.
+\paragraph{\textbf{Similarity and association between genres}}
+The similarity between genres could be obtained by applying our similarity measure to the average data of each genres. We draw a heat map reflecting the similarity between genres, as shown in fig.5.The influence of artists among different genres reflected the association between genres. For example, if the artist in genre A was influenced by many artists in genre B, then part of genre B may borrow genre A so genre A and genre B were similar. To reflect the effect of genre A on genre B, we improved the IS measure in the association analysis and formulated the amount to measure the effect I of genre A on genre B,I was given by:
+\begin{equation}
+    I\left ( A\to B \right ) =\frac{2\log_{}{N\left ( A\to B \right )} }{\log_{}{N_{inf}A }+ \log_{}{N_{fol}B }} 
+\end{equation}where $N\left ( A\to B \right )$indicated the number of records from A and followers from B, $N_{inf}A$ indicated the number of records from A and $N_{fol}B $ indicated the number of records of followers from B. Taking the logarithmic operation to eliminate the influence of genre base difference, on the basis of these data, we draw the heat map reflecting the mutual influence between genres.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=0.4\textwidth]{figures/heat.png}
+    \caption{Similarity between genres and Influences between genres}
+    \label{fig:my_label}
+\end{figure}
+Combining the two thermal maps, it could find that in terms of similarity, "Pop / Rock" and "R and B;" were two more similar music, "Vocal", "Jazz" and "Blues" were three more similar music, and "Country" was more independent. In terms of the influence of genres, the internal influence of the genre itself was more significant than that of genres. Pop / Rock " was influenced by a variety of genres and was a strong fusion genre. Combining the two pictures, the significance of the influence between genres does not mean the similarity between genres. For example, there was a strong interaction between "Country" and "Pop / Rock", but the similarity between the two was not high.
+\subsection{Problem4}
+Some musical features were some kind of similar of each other, for example, energy and loudness had a connection. In order to reduce calculation and made the analysis results more concise, we combined the original features into five major categories, which characterized the key characteristics of the five music. Five categories of indicators by special algorithm to include the original small index for a [0,1], score meaning is different from the original, we designed algorithm to ensure the categories of indicators contained music features in the same approach was similar.Five major indicators were used to analyze whether the musical features of followers:We conducted a one-to-one analysis of a particular follower with one of his influencers. First, the five categories of all the music works were calculated and the average scores of the five categories A1, A2, A3, A4 and A5 were obtained. Next, the five categories of $B_{ji},j \in [1,5]$ of the follower (i means the first work of the follower should be numbered in chronological order). Then we analyzed the five categories of indicators separately, that was, $B_{1i}$ and A1, and so on. Let the follower had n works. If the average value of series $B_{1}$ was near A1, then we could think that the influencer had a more obvious influence on the follower in this category of characteristics, and the analysis of several other categories of indicators is the same as this.\par After the analysis of multiple pairs of followers and influencers, if the analysis results showed that there were more obvious effects on followers in a certain category of characteristics (compared to other categories of characteristics), the characteristics could be considered to be more infectious,where two pairs of followers and influencers were selected, respectively, Queen from R and B (Influencer) and Smashing Pumpkins from pop (follower),
+and Bob Dylan from pop and Johnny Cash from country.\par The five indicators were:
+\begin{enumerate}
+    \item \textbf{rhythm category}
+    Contained the original danceability and tempo feature, used to characterize the rhythmic characteristics of the music.Given by
+    \begin{equation}
+        T\left ( D,P \right ) =D\times \left \{ 0.5+0.5\times \tanh \left [ -\ln_{}{\left ( \frac{P-90}{30}  \right ) }  \right ]  \right \}     
+    \end{equation}where D was the value of danceability and P was the value of tempo. The second half of this formula guaranteeed 60 to 120 bpm corresponding to 0.5 bpm to 1.The larger the rhythm, the more general the rhythm tends to be (80 to 100 bpm is the most common rhythm of music and the beat most likely to be used for rhythmic movements such as dance).
+    \item \textbf{{energy category}}
+    Containing the original energy and loudness indicators, used to represent the characteristics of music passion.Given by:
+    \begin{equation}
+        T\left ( E,L \right )=E\times \left \{ 00.5+\frac{L+30}{60}\times \tanh \left [ 0.01\times \left ( L+30 \right )^{2}   \right ]   \right \}  
+    \end{equation}where E was the value of energy and L was the value of loudness. The second half of this formula guarantees-60 to -30dB corresponding to 0 to 0.5 and -30 to 0dB corresponds to values of 0.5 to 1. The larger the value , the more intense the music.
+    \item \textbf{Emotion category}
+    was just original feature valence which characterize the emotional characteristics of the music.The larger the valence, the more positive the music, and the worse, vice versa.
+    \item \textbf{Lyric category}
+    Containing the original acousticness, instrumentalness, speechiness, explicit features, characterizing the vocal characteristics of the music.Given by:
+    \begin{equation}
+         T\left ( A,I,S,X \right )=\left \{ 0.5+0.5\times \tanh \left \{ \left [ 1+\left ( A-0.5 \right ) ^{3}  \right ] \times 100 \times \left ( l-1 \right ) \times \left ( S-0.5 \right )\times e^{\sqrt[3]{X-0.5} }   \right \}  \right \}  
+    \end{equation}where A was acousticness, I was instrumentalness, S was speechiness, X was explicit. The larger the value of this type, the more dominant the recitation of the lyrics were more prominent and the singing was weak and the lyrics were rich. The smaller the value indicates that the background music was more dominant and the lyrics tended to be more simple and melodic, the singing was more prominent.
+    \item \textbf{Melody category}
+    Containing the original mode, key , characterizing the melodic characteristics of the music.Given by:
+    \begin{equation}
+        T\left ( M,K \right )=\frac{M+0.5}{2}\times \left \{ 0.5+0.5\times \tanh \left [ \frac{4-K}{10}\times \ln_{}{\left ( 1-\left | \frac{1}{5}\times \left ( K-4 \right )   \right |  \right ) }   \right ]  \right \}   
+    \end{equation}where M is the mode value, K is the key value.The larger the value of this category, the more the melody characteristics of the song tend to be high and up (major), and the lower the tend to bass and down (minor).
+\end{enumerate}
+\par The result was show in fig.6.
+\begin{figure}
+    \centering
+    \subfigure[pair1:Smashing Pumpkins and Queen]{
+        \centering
+         \label{fig:subfig:onefunction}
+        \includegraphics[width=0.2\textwidth]{figures/pair1_r.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair1energy.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair1emo.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair1lyric.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair1melody.png}
+        }
+    \subfigure[pair2:Bob Dylan and Johnny Cash]{
+        \centering
+         \label{fig:subfig:onefunction}
+        \includegraphics[width=0.2\textwidth]{figures/pair2r.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair2energy.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair2emo.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair2lyric.png}
+        \includegraphics[width=0.2\textwidth]{figures/pair2melody.png}
+        }
+    \caption{Result of two pairs}
+    \label{fig:my_label}
+\end{figure}
+It indicated that in the first influence (Queen) and followers (Smashing Pumpkins) , the followers in the rhythm characteristics, energy characteristics and melody characteristics score was not fixed, basically throughout the high section and low section, that the followers work style was in these aspects, changeable and with the passage of time, the followers work style distribution without larger change. In terms of emotional characteristics and lyric characteristics, the scores of followers were generally lower than those of influencers, but they did not change significantly over time. Therefore, it could not be considered here that influencer Queen had a obvious impact on follower Smashing Pumpkins. For the works of the second pair of influencers (Bob Dylan) and followers (Johnny) we analyzed, the style distribution of the works did not change significantly over time in three aspects: rhythm, energy, emotional and melodic characteristics. But on the lyrics class characteristics, followers with the passage of time, the creation of the lyrics index high songs have relatively obvious reduced, namely he created more inclined to read the lyrics class music in the late stage was significantly reduced, the change and influence of work lyrics characteristics index was low, music tends to more musical and singing characteristics was consistent. Thus, it was reasonable to speculate that the works of Influencer Bob Dylan had a certain influence on the lyric class characteristics of Johnny in the works of followers.
+\subsection{Problem5}
+In this part,a mutation detection model based on the sliding T test was developed,in addition,we tested the five category features and located the potential musical revolution based on the timing of these features. Next, we examined the combined genre's characteristics and identified the genres that supported the revolution. After that, we identified the revolutionaries based on the influence factor in the network relationship and confirmed their role.\par
+\paragraph{\textbf{Sliding T-test model}}
+The model was a classical time-series mutational test.Setting a sliding window with a certain step size and calculating the mean value. If the mean of the ith sliding window was $\Bar{x_{i}}$ and the variance was $Var_{i}$; the mean of the i + 1th window was $\Bar{x_{i+1}}$ and the variance was $Var_{i+1}$. Then did the hypothesis test on $\Bar{x_{i}}=\Bar{x_{i+1}}$, and the test statistics at the step size s (s> 1) were as follows:
+\begin{equation}
+    t=\frac{\Bar{x_{i}}-\Bar{x_{i+1}}}{\sqrt{\frac{s\left ( Var_{i}+Var_{i+1} \right ) }{s-1} } } 
+\end{equation}The statistic t should follow the t distribution with degrees of freedom of 2s-2. Whether$\Bar{x_{i}}=\Bar{x_{i+1}}$ could be determined with certain confidence. If the hypothesis was not valid with sufficient confidence, a mutation could be considered between the i th sliding window and the i + 1th window.
+\paragraph{\textbf{Music revolution and its content}}
+We integrated the musical features in the "data by year" dataset into five main categories, rhythm, energy, emotion, lyrics and melody respectively. then sorted it into five time series in the order of year. We conducted the sliding T-test centered on each year from 1926 to 2015 and the before and back steps of 5 years for two windows,next we obtained the t-statistic for each year. The t-statistics of the four features in each year were expressed by broken lines (the melody features were abandoned due to little change), and the confidence interval was determined at $\alpha$ =0.01 (the confidence interval of the t-test of 8 is-3.36 to 3.36 at $\alpha$ =0.01). The results were shown in fig.7.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/T.png}
+    \caption{Sliding T-test for the four main features of music from 1921 to 2020}
+    \label{fig:my_label}
+\end{figure}
+\par The four broken lines in the figure indicated the t-statistic for each of the four features in each year and the black dashed line indicated the confidence interval with 99 percents confidence. The value beyond the upper confidence interval reflected the mutation with increasing feature quantity,moreover the value beyond the upper confidence interval reflected the mutation with decreased feature quantity. When three or more of the four features had mutations, the revolution could be considered within 10 years around this year. We could find three potential musical revolutions, represented by the red dashed line in the figure, from 1950 to 1960,1960-1970, and 1995 to 2005, respectively. All the four features from 1955 to 1965 were close to or beyond the confidence interval. Given the width of the window of five years, we believed that the music industry between 1950 and 1970 has experienced a major revolution,we payed attention to the analysis of this revolution.\par 
+The revolution was characterized by the increased energy of the song, the more cheerful mood and at the same time the rhythm slowed down and the amount of lyrics droped. We counted the proportion of genres in all music before 1950 and the proportion of genres in all music between 1950 and 1960. Found that the "Pop / Rock" genre of music increased from 3percents before 1950 to 27percents, it reached the largest between 1950 and 1960. Additionally, as mentioned above, we mentioned that the music of the "Pop / Rock" genre was characterized by high energy and low acoustic confidence (namely "acousticness"), which fits the characteristics of this revolution so that it could be inferred that this revolution marks the rise of the "Pop / Rock" genre.\par
+After identifying the "Pop / Rock" genre as the decisive force of the revolution, we built a network of influencers and followers of the "Pop / Rock" genre that was active from 1950 to 1960 and their followers and used the PageRank algorithm to calculate their influence factors. Those artists with high influence factors could be considered as the drivers of the revolution. The results showed that the following artists were revolutionaries: Little Richard, Esquerita, Elvis Presley, The Beatles, Chuck Berry, Bob Dylan, Buddy Holly, The Rolling Stones, and Jerry Lee Lewis. Some of these people were rock superstars, such as "Elvis Presley", "The Beatles", "The Rolling Stones", and some were influencers of these giant stars, such as "Little Richard", "Esquerita". To further test the role that these revolutionaries play, we compared the work characteristics of these artists with those of the works before 1950,the result was shown in fig.8.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth,height=0.5\textwidth]{figures/feature.png}
+    \caption{Comparison of the characteristics of revolutionaries with those of works before 1950}
+    \label{fig:my_label}
+\end{figure}\par The red boxplot in the figure showed the numerical distribution of the four features of the works before 1950, the black scatter showed the characteristic values of the works of the revolutionaries. It could be found that the energy features and emotional features of the revolutionaries' works were significantly higher than those of the works before 1950. Combined with the characteristics of the revolution, it proved that the high-energy and emotionally cheerful pop-rock music created by the revolutionaries drove the revolution.
+\subsection{Problem6}
+\paragraph{\textbf{Ridge regression model}}
+We used the data in full music data to calculate the annual feature means of all the "Pop / Rock" genres of music between 1956 and 2020,further more, we combined them into the five main features mentioned above.Then it was found that the two characteristics of energy and emotion changes with time was more obvious and took them as a research object, in order to characterize the trend of their change with time, we used the ridge regression model, which was on the basis of linear regression added two norm form of regularization term to overcome the noise or multicollinearity in the data. Ridge regression for m n-dimensional samples $y=X\theta$ with the objective function form as follows:
+\begin{equation}
+    J\left ( \theta  \right ) =\frac{1}{2}\sum_{i=1}^{m}\left ( h_{\theta }\left ( x_{i}-y_{i}   \right )   \right ) ^{2}   +\alpha\sum_{i=1}^{n}\theta _{i}^{2}  
+\end{equation}where the stronger the model noise resistance $\alpha$, the lower the curve fit, the larger the regular strength. We chose the ridge regression model to get around the interference of the noise points because the number of genres of music in the years varied (the timing of the data ends and the middle of the number gap is larger). In some years, the data was too little and basic data from the same singer causes the year data to not accurately reflected the trend.
+\paragraph{\textbf{Analysis of the evolution of the genre}}
+We applied the ridge regression model to the energy value and emotion value of the Pope / Rock,R and B,country genres, with the one-thousandth of the year as the horizontal axis, we determined the $\alpha$ value by cross-validation.The energy value and emotion value changed of the music from the above three genres were shown in fig.9, where the scatter indicated the true value and the straight line was the fitted value.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/three.png}
+    \caption{The energy and emotional values of the three genres over time}
+    \label{fig:my_label}
+\end{figure}
+Finally, we obtained a dynamic representation of the change of these two features. The expression of the change of the energy value $E_{n}$ over time t (t is 1 / 1000 of year) was $E_{n}=3.93t-7.26$, and the expression of the emotion value $E_{m}$ over time t (t is 1 / 1000 of year) was $E_{m}=-3.67t+7.83$.Fig.10 showed,over time, the "Pop / Rock" genre had seen the following evolution: the energy increased and the emotion became lower. We applied the model to two other popular genres —— R and B and Country, the two dynamic factors of energy and emotion also reflected not only the development trend of one genre, but the mainstream trend of all music.
+\paragraph{\textbf{Analysis of the individual development of the artists}}
+We chose Bob Dylan from the Pop / Rock genre because the artist had a long creative period (from 1960 to 2000), which helped to track his development. We used the ridge regression model to analyze the average energy value, the average emotional value, the creation number and the average popularity of his music created between 1960 and 2000 years. The results were shown in fig.10, where the scatter point represented the true value, the straight line was the fitted value,since the number of creations and the average popularity range from 0 to 100, they shared a vertical axis.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/bob.png}
+    \caption{style changing trend and creation changes of Bob Dylan}
+    \label{fig:my_label}
+\end{figure}
+From the figure, it could be find that the energy value and emotional value of Bob Dylan's works fluctuate greatly and the trend was not obvious, but it still generally follows the evolution trend of the "Pop / Rock" genre. His work showed a clear trend: over time, fewer works were created but of higher quality. This also reveals the general development law of artists: in the younger blowout period of creation, the amount of creation gradually decreases with increasing age and limited energy; but on the other hand, the quality of works also improved with the accumulation of experience.
+\subsection{Problem7}
+Music is a reflection of society, politics and culture, politics influences the subject matter of music works, politics influences the genre and form of music, politics influences the social status of music, can promote the realization of a harmonious society, politics and music are interlinked. Throughout history, the rise and fall of music in every dynasty or social form is closely related to the social reality and the politics and culture implemented by the government at that time.\par
+According to our previous statistical analysis of the change of song style over time and the time of a certain style of songs, we further identified the interaction between music and society according to the social and technical changes before and after the historical time. On the other hand, the life experience and fame history of the representatives of the change of this music style could also provide a reference for us to analyze the connection between music development and social events. \par
+Take problem5 of the Pop / Rock genre music in the 1960s as an example,the energy feature index of music during this period changed significantly. Energy feature High index of music was often full of passion, could bring greater stimulation to human nerves, and the American rock music in the 1960s could be said to be different styles, many genres. From the ioIk rock represented by Bob Dylan, the invasion of the British mainstream rock represented by The Beatles and The Rolling Stone, to the psychedelic rock, known as the "sound of San Francisco", to the later jazz rock and art rock. Their contribution to The Times was not limited to the creation of music, but also to the conflict and opposition between the cultural values contained in rock music and the traditional American cultural values.\par
+On the one hand, psychology showed that people who had experienced psychological trauma or lived in depressed living conditions were more inclined to pursue these more exciting music to vent their repressed emotions. It was just at the end of World War II and people had been living in the dark days of World War II for too long, especially the children born during World War II, who were born during World War II, leaving an indelible shadow of childhood and in the 1960s they were precisely the age of youth or teenagers.At that time, its music audience was mainly young people and young people, creating a sales myth in the music industry, which further confirmed the need for children born in World War II for intense emotional catharsis. Rock music was rebellious and unique, but also the most real emotion released deep in the heart. The social unrest and people's inner desire were all the factors behind the rock music pop.It was related to the history of science and technology, we also believed that electronic computers gradually popularized and entered the music industry in the 1960s, electronic music began to flourish,too. Therefore, we identified the interaction of music and society according to the change of musical characteristic indicators over time and the historical or technological events before and after the corresponding time.
+\section{Conclusion}
+It was relatively common to use the characteristic data and distribution data of music to study genres and development of music, there has been many previous work. For example, the tanimoto coefficient could be used to measure the similarity of vectors, classify some features into one class and use ridge regression to analyze past time series data. In this paper, we used more than ten data on music characteristics, such as the average loudness of tens of thousands of music, as well as the data on the music release time, author and genre, to study the development of music and the interaction between music in the past 100 years.\par
+Through quantitative analysis, we deepened the understanding of the influence of music and the overall evolution, in the process of music development, many music genres, such as pop music and country music, genre internal music characteristics compared with the genre of music was higher similarity,additionally, music characteristics between genres was not completely independent, they also had certain similarity, but also had their own characteristics. We used the PageRank algorithm to build a weight directed graph reflecting the artist's influence and measured the artist's musical influence by calculating the influence factor,also give influential musicians accordingly. The mutual influence of musicians in different genres had an important influence on the development trend of music. Individual musicians in the network had an impact on most musicians,it could be argued that a few outstanding musicians had a huge impact on the future and development of the entire music industry.\par
+We further developed a mutation detection model based on the sliding T-test and tested several musical features to analyze the social musical feature changes over time. The results showed that there should have been a huge musical revolution around 1950-1970 and the pop / rock genre played a major role in this revolution,there should have been a slightly smaller musical revolution in the late 20th and early 21st century.\par
+With the pop / rock genre as an example, we analyzed the process of musical characteristics of the genre over time using regression model. The results showed that over time, the "pop / rock" genre experienced the following evolutions: energy gradually increased and emotion became lower. The works of the musicians selected from the genre show that although the musical characteristics of their works fluctuate, they still generally followed this change, the later their works were, the more trend of fewer but more popular works.\par
+Based on the time when the popularity of music had changed and combined with historical sources, we thought the widespread popularity of the pop / rock genre in the 1960s was a huge shock in the music world. From the historical and cultural analysis of the American rock music in the 1960s, it could be seen that the rock music in the 1960s had a profound impact on the various aspects of the American social value system, including the racial view, the spirit of The Times and values. For American youth in the 1960s. They had experienced many major times, the fall of a generation of political leaders, the history of surging, everything was questioned, people urgently needed to spiritual and cultural nourishment, needed to represent the leader of the spirit to lead people heavy tree confidence,rock was properly fill the blank in the spirit of this generation, rock music not only properly reflected the people's hesitation and question, also gave people spiritual inspiration, different color of race by music united, fought side by side,been ready to rebuild their spiritual home. This revolution might have something to do with World War II and the development and popularization of electronic computers.
+\section{Strengths and weaknesses}
+\subsection{Strengths}
+\paragraph{\textbf{Robustness}}
+\begin{enumerate}
+    \item The calculated tanimoto formula is more sensitive to the difference in the projection length of the vector dimension, and avoids the false similarity caused by the original single directionality.
+    Compared to the conventional cosine similarity, the tanimoto coefficient accounts only for the directionality of the two vectors and further considers the size difference of the two vectors, and is thus more robust.
+    \item Ridge regression obtains the regression coefficient at the cost of losing partial information and reducing the accuracy. It is a more realistic and reliable regression method, and the fit to the data with outlier points is stronger than the least squares method.
+\end{enumerate}
+\paragraph{\textbf{Reasonable}}
+\begin{enumerate}
+    \item Index design has a strong scientific nature and logic.Take the key class index of music as an example, it is a natural number from zero plus-1 representing no tone as a low to high indicator of the overall tone. In the calculation, we designed the characterization of key factor using the hyperbolic index to [0,1], and the special logarithmic function to modulate, because the overall tone of music works most distribution in C to G (key=0-8) and the difference between the two adjacent tones is very small, few music in G (Key> 8), we think its high pitch has very typical characteristics, so with the above C to G (key=0-8) distribution in the calculated numerical design has quite different. When Key= -1, the music has no tone, which also has very typical characteristics, so it needs to be greatly distinguished from other tones.
+    \item Ridge regression obtains the regression coefficient at the cost of losing partial information and reducing the accuracy. It is a more realistic and reliable regression method, and the fit to the data with outlier points is stronger than the least squares method.
+\end{enumerate}
+\paragraph{\textbf{Interpretability }}
+\begin{enumerate}
+    \item Our five categories allow for the interpretation, discovery, and prediction of revolutions in music and times.
+\end{enumerate}
+\subsection{Weaknesses}
+\begin{itemize}
+    \item In problem4,although we converted several features into five categories based on information maximum rule,it could not avoid that lost of information,as a song was change to 5 dimension vector from 10 dimension vector.This could distribute some lack of details.Another point was,the five categories were not completely independent which meant the similar matrix might use more computing resources in calculation.
+    \item In problem5,Considering that the hypothesis test only verifies that the mean equality valid, the sliding t mean alone may be biased, and the results are affected by the window width. May be considered and used in combination with the MK test.
+    \item In problem6,because the ridge regression does not shrink the coefficient to 0, but makes the overall coefficient become smaller, the interpretability of the model will be greatly reduced, and the multiple collinear problem cannot be solved fundamentally either.
+\end{itemize}
+\section{Report}
+Music, as an important art form and cultural activity of mankind since ancient times, has been accompanied by the development of human society. It is impossible to investigate when human society began to have music, but as early as human beings have not produced language, they have known to use the strength of sound to express their own meaning and feelings. Music is an auditory image composed of regular sound. It is an art form that can express people's thoughts and feelings and social real life. It is one of the art forms that can move people most instantly. It is because music has such a wonderful role, it can live in the long history of life, with the development of human society.
+\par
+Music has an important social status. As early as the ancient Han Dynasty in China, there was an official organization dedicated to creating music, while in the West, even religion was first spread with musical singing. Music has always been found in every corner of human society. Music has such a strong appeal and express the role of human feelings that the development of music is closely related to the development of human society and historical events. People have been using all kinds of music to express the voice of their time and handed down to today, system and rigorous music history is also the epitome of human social history. Different people like different music and express different emotions in different ways, so various genres appear. Up to now, people have countless music, which is a precious wealth of the development of human society.
+\par
+Music has developed from thousands of years ago to now, has gone through countless ups and downs, countless kinds of music from the emergence to prosperity to decline and then until gradually forgotten. The history of music has been very vast, and the history of music has become a special field of research. In Europe, the earliest classical music developed during the medieval Elizabethan period, mainly dominated by Gregorian religious music. Then came the Renaissance, when folk music outside of religion began to appear. In the 17th century, European classical music entered the Baroque period, and the music of this period was mainly polyphonic music, and the style gradually moved from religious rigor to freedom. After the death of the famous musician Bach, music entered the classical period. The music of this period inherited the traditional European polyphonic music and major tune music achievements, and established important musical forms such as sonatas, concertos and symphonies. After 1820, romantic music began to sprout, and music entered the romantic period of music forms were more abundant. At the beginning of the 20th century, impressionist music, Expressionist music, neoclassical music and other musical forms have emerged further. From the history of western music, we can see the shadow of the development of man and society, such as the decline of religion, the development of freedom and humanism.
+\par
+After hundreds of generations of human development, music has formed a huge artistic system including strings, wind music, vocal music. Various musical instruments such as violin, piano, harp, trombone and flute have also been born. There are Beethoven, Mozart and other immortal artists and a large number of their followers. It can be said that all kinds of information contained in the music field are valuable cultural wealth and are worth our in-depth study.
+\begin{thebibliography}{99}
+\bibitem{society}Roy, W. G., and Dowd, T. J. (2010). What is sociological about music?. Annual Review of Sociology, 36, 183-203.
+\bibitem{Ta}H. Shu, "Two Distillation Perspectives Based on Tanimoto Coefficient," 2022 IEEE International Conference on Image Processing (ICIP), Bordeaux, France, 2022.
+\bibitem{tree}C. Zhang, Y. Li, Z. Yu and F. Tian, "Feature selection of power system transient stability assessment based on random forest and recursive feature elimination," 2016 IEEE PES Asia-Pacific Power and Energy Engineering Conference (APPEEC), Xi'an, China, 2016.
+\bibitem{category}S. Cherubin, C. Borrelli, M. Zanoni, M. Buccoli, A. Sarti and S. Tubaro, "Three-Dimensional Mapping of High-Level Music Features for Music Browsing," 2019 International Workshop on Multilayer Music Representation and Processing (MMRP), 2019.
+\bibitem{pagerank2}Ying D ,  Yan E ,  Frazho A , et al. PageRank for ranking authors in co-citation networks. Journal of the American Society for Information Science and Technology, 2014.
+\bibitem{pagerank1}Page, Lawrence, Brin, et al. Page, L.  et al.: The PageRank citation ranking: Bringing order to the web. stanford digital libraries working paper, 1998.
+\bibitem{ridge}R. Bayindir, M. Gok, E. Kabalci and O. Kaplan, "An Intelligent Power Factor Correction Approach Based on Linear Regression and Ridge Regression Methods," 2011 10th International Conference on Machine Learning and Applications and Workshops, 2011.
+\bibitem{history}P. Hu and J. Zhang, "Research on Exploration on Curriculum Reform of Western Music History Based on WeChat Platform, "20212 nd International Conference on Artificial Intelligence and Education(ICAIE), 2021.
+\bibitem{history1}
+Straw, Will,Characterizing Rock Music Culture: The Case of Heavy Metal.Canadian University Music Review,1984.
+\end{thebibliography}
+
+\begin{appendices}
+
+
+
+%Here are simulation programmes we used in our model as follow.\\
+\section{Codes}
+\textcolor[rgb]{0.98,0.00,0.00}{\textbf{Python}}
+\lstinputlisting[language=python]{./code/show.py}
+\end{appendices}
+\end{document}
+%%
+%% This work consists of these files mcmthesis.dtx,
+%%                                   figures/ and
+%%                                   code/,
+%% and the derived files             mcmthesis.cls,
+%%                                   mcmthesis-demo.tex,
+%%                                   README,
+%%                                   LICENSE,
+%%                                   mcmthesis.pdf and
+%%                                   mcmthesis-demo.pdf.
+%%
+%% End of file `mcmthesis-demo.tex'.
